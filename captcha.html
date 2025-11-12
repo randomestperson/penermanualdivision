@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verification Required - Pener Corporation</title>
+    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: #000;
+        color: #fff;
+        font-family: 'Courier New', monospace;
+        text-align: center;
+      }
+      h1 {
+        color: #ff3333;
+        margin-bottom: 1rem;
+      }
+      #status {
+        margin-top: 1rem;
+        font-size: 1.1em;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Are You Human?</h1>
+    <p id="status">Running verification...</p>
+
+    <script>
+      const chance = Math.random();
+            if (chance < 0.1) {
+              document.getElementById('status').textContent = 'Verification successful! Redirecting to checkout...';
+              setTimeout(() => {
+                window.location.href = 'checkout.html';
+              }, 2000);
+            } else {
+              document.getElementById('status').textContent = 'Verification Insuccessful... please verify again.';
+              setTimeout(runCaptcha, 2000); // loop again
+            }
+
+      document.addEventListener('DOMContentLoaded', runCaptcha);
+    </script>
+  </body>
+</html>
